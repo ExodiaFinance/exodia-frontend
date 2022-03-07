@@ -630,20 +630,21 @@ export const DashboardPriceGraph = ({ isDashboard = false }) => {
   const { protocolMetrics } = useTreasuryMetrics();
   const [selectedData, setSelectedData] = useState("marketCap");
 
-  const entries = { price: 0, wsExodPrice: 1, marketCap: 2 };
+
+  const entries = { exodPrice: 0, wsExodPrice: 1, marketCap: 2 };
 
   const value =
     protocolMetrics &&
-    (selectedData == "price"
-      ? protocolMetrics[0].price
+    (selectedData == "exodPrice"
+      ? protocolMetrics[0].exodPrice
       : selectedData == "wsExodPrice"
       ? protocolMetrics[0].wsExodPrice
       : protocolMetrics[0].marketCap);
 
   const lastValue =
     protocolMetrics &&
-    (selectedData == "price"
-      ? protocolMetrics[1].price
+    (selectedData == "exodPrice"
+      ? protocolMetrics[1].exodPrice
       : selectedData == "wsExodPrice"
       ? protocolMetrics[1].wsExodPrice
       : protocolMetrics[1].marketCap);
@@ -667,7 +668,7 @@ export const DashboardPriceGraph = ({ isDashboard = false }) => {
         onChange={e => setSelectedData(e.target.value)}
         disableUnderline
       >
-        <MenuItem value={"price"}>EXOD</MenuItem>
+        <MenuItem value={"exodPrice"}>EXOD</MenuItem>
         <MenuItem value={"wsExodPrice"}>wsEXOD</MenuItem>
         <MenuItem value={"marketCap"}>Market Cap</MenuItem>
       </Select>
@@ -684,7 +685,7 @@ export const DashboardPriceGraph = ({ isDashboard = false }) => {
       initialTimeSelected="3 month"
       headerText={
         <>
-          {selectedData == "price" ? "EXOD Price" : selectedData == "wsEXOD" ? "wsEXOD Price" : "Market Cap"}{" "}
+          {selectedData == "exodPrice" ? "EXOD Price" : selectedData == "wsEXOD" ? "wsEXOD Price" : "Market Cap"}{" "}
           {<Trend formattedValue={formatCurrency(value)} value={value} lastValue={lastValue} />}
         </>
       }

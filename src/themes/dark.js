@@ -68,6 +68,7 @@ export const darkTheme = {
     IRON: "#2CAA40",
     YFI: "#0262C3",
     "The Monolith": "#46ab15",
+    DEFAULT: "#0f0f0f",
   },
   trendUp: "#43e055",
   trendDown: "#ed3939",

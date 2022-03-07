@@ -36,8 +36,7 @@ export const getTokenBalances = (treasuries, auxes, theme, { isRiskFree = false,
   });
 
   const dataKeys = filterSortDataKeys(keys, type);
-  const colors = dataKeys.map(key => theme.palette.treasuryColors[key] || theme.palette.treasuryColors.NONE);
-
+  const colors = dataKeys.map(key => theme.palette.treasuryColors[key] || theme.palette.treasuryColors.DEFAULT);
   const value = isRiskFree ? treasuries[0].riskFreeValue : treasuries[0].marketValue;
   const lastValue = isRiskFree ? treasuries[1].riskFreeValue : treasuries[1].marketValue;
   const formattedValue = formatCurrency(value);

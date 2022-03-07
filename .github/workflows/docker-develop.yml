@@ -2,7 +2,7 @@ name: Docker Build Dev
 
 on:
   push:
-    branches: [ master ]
+    branches: [ develop ]
 
 jobs:
   build-push:
@@ -19,7 +19,7 @@ jobs:
       - name: Push app to GitHub Packages
         uses: docker/build-push-action@v2
         with:
-          tags: "ghcr.io/exodiafinance/exodia-frontend:latest"
+          tags: "ghcr.io/exodiafinance/exodia-frontend:development"
           push: true
           build-args: |
             GA_API_KEY=${{secrets.GA_API_KEY}}
