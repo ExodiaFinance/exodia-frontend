@@ -5,12 +5,7 @@ ENV REACT_APP_GA_API_KEY=$GA_API_KEY
 
 WORKDIR /app
 COPY . .
-RUN rm -r src/locales/translations
-RUN git clone https://github.com/ExodiaFinance/exodia-translations.git src/locales/translations
-RUN yarn install --frozen-lockfile
-RUN yarn lingui:extract
-RUN yarn lingui:compile
-RUN yarn build
+RUN sh build.sh
 
 FROM nginx
 COPY --from=build /app/build /usr/share/nginx/html

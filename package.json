@@ -127,6 +127,7 @@
   },
   "scripts": {
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "build:deployment": "sh build.sh",
     "eject": "react-scripts eject",
     "start": "react-scripts start",
     "test": "react-scripts test",
