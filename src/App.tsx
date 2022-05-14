@@ -2,7 +2,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import { useEffect, useState, useCallback } from "react";
 import { BrowserRouter as Router, Route, Redirect, Switch, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useMediaQuery } from "@material-ui/core";
+import { Backdrop, Card, CardContent, Link, Typography, useMediaQuery } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import styled from "styled-components";
@@ -88,6 +88,10 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
+  },
+  rootOverlay: {
+    zIndex: 1000,
+    position: "absolute",
   },
 }));
 
@@ -298,6 +302,41 @@ function App() {
 
   return (
     <ThemeProvider theme={themeMode}>
+      <Backdrop open={true} className={classes.rootOverlay}>
+        <Card>
+          <CardContent>
+            <Typography variant={"h3"}>Exodia is closed</Typography>
+            <Typography variant={"body1"}>
+              The community decided to end the project with{" "}
+              <Link
+                href={
+                  "https://snapshot.org/#/exodiadao.eth/proposal/0x175551e37ce0449cec533329c6ed65f29268b3c98af9e63b964d7393358faafb"
+                }
+                rel="noopener noreferrer"
+                target={"_blank"}
+                color={"primary"}
+              >
+                XIP-007
+              </Link>
+              and redistribute the treasury.
+            </Typography>
+            <Typography variant={"body1"}>
+              All information regarding the redistribution can be found{" "}
+              <Link
+                href={
+                  "https://docs.google.com/spreadsheets/d/1CKMRjn0J3xRSpmxgDJFTPMt9lETMCfIz6ow3LmFZQDQ/edit#gid=1376773481"
+                }
+                rel="noopener noreferrer"
+                target={"_blank"}
+                color={"secondary"}
+              >
+                here
+              </Link>
+              .
+            </Typography>
+          </CardContent>
+        </Card>
+      </Backdrop>
       <Router>
         <CssBaseline />
         {/* {isAppLoading && <LoadingSplash />} */}
